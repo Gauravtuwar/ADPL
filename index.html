@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Department</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        header {
+            width: 100%;
+            background-color: #003366;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1, h2 {
+            text-align: center;
+            color: #003366;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        .radio-group label {
+            display: block;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #003366;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0059b3;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+        footer {
+            width: 100%;
+            background-color: #003366;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Cybersecurity Department Portal
+</header>
+
+<div class="container">
+    <h1>Welcome to the Cybersecurity Department</h1>
+
+    <!-- Page 1: Year Selection -->
+    <div class="form-section active" id="page1">
+        <h2>Select Your Year</h2>
+        <p>Please choose your current year in the program.</p>
+        <div class="radio-group">
+            <label><input type="radio" name="year" value="1st Year"> 1st Year</label>
+            <label><input type="radio" name="year" value="2nd Year"> 2nd Year</label>
+            <label><input type="radio" name="year" value="3rd Year"> 3rd Year</label>
+            <label><input type="radio" name="year" value="4th Year"> 4th Year</label>
+        </div>
+        <div class="buttons">
+            <button id="next1">Next</button>
+        </div>
+    </div>
+
+    <!-- Page 2: Student Information -->
+    <div class="form-section" id="page2">
+        <h2>Student Information</h2>
+        <p>Please provide your personal information below.</p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        <label for="studentId">Student ID:</label>
+        <input type="text" id="studentId" name="studentId" placeholder="Enter your student ID">
+        <div class="buttons">
+            <button id="prev2">Previous</button>
+            <button id="next2">Next</button>
+        </div>
+    </div>
+
+    <!-- Page 3: Department Activity -->
+    <div class="form-section" id="page3">
+        <h2>Department Activities</h2>
+        <p>Learn about various activities organized by the Cybersecurity Department, including workshops, guest lectures, and competitions.</p>
+        <ul>
+            <li>Monthly workshops on ethical hacking</li>
+            <li>Annual Cybersecurity Conference</li>
+            <li>Guest lectures by industry experts</li>
+        </ul>
+        <div class="buttons">
+            <button id="prev3">Previous</button>
+            <button id="next3">Next</button>
+        </div>
+    </div>
+
+    <!-- Page 4: Sports Activities -->
+    <div class="form-section" id="page4">
+        <h2>Sports Activities</h2>
+        <p>Our department participates in various sports activities, promoting a balanced and healthy lifestyle among students.</p>
+        <ul>
+            <li>Inter-departmental football tournament</li>
+            <li>Annual Cyber Sports Day</li>
+            <li>Weekly fitness sessions</li>
+        </ul>
+        <div class="buttons">
+            <button id="prev4">Previous</button>
+            <button id="submit">Submit</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2023 Cybersecurity Department - All Rights Reserved
+</footer>
+
+<script>
+    const sections = document.querySelectorAll('.form-section');
+    const next1 = document.getElementById('next1');
+    const next2 = document.getElementById('next2');
+    const next3 = document.getElementById('next3');
+    const prev2 = document.getElementById('prev2');
+    const prev3 = document.getElementById('prev3');
+    const prev4 = document.getElementById('prev4');
+    const submit = document.getElementById('submit');
+
+    let currentPage = 0;
+
+    next1.addEventListener('click', () => changePage(1));
+    next2.addEventListener('click', () => changePage(2));
+    next3.addEventListener('click', () => changePage(3));
+    prev2.addEventListener('click', () => changePage(0));
+    prev3.addEventListener('click', () => changePage(1));
+    prev4.addEventListener('click', () => changePage(2));
+    submit.addEventListener('click', () => alert("Form submitted successfully!"));
+
+    function changePage(pageNumber) {
+        sections[currentPage].classList.remove('active');
+        currentPage = pageNumber;
+        sections[currentPage].classList.add('active');
+    }
+</script>
+
+</body>
+</html>
